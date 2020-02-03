@@ -80,6 +80,50 @@ noremap <Space><CR> o<ESC>
 "set autoindent
 "set shiftwidth=2
 "
-"set clipboard+=unnamed
+set clipboard+=unnamed
 " Deleteが効かなくならない様に
 set backspace=indent,eol,start
+
+"dein Scripts-----------------------------
+if &compatible
+  set nocompatible               " Be iMproved
+endif
+
+" Required:
+set runtimepath+=/Users/shun/.vim/bundles/repos/github.com/Shougo/dein.vim
+
+" Required:
+if dein#load_state('/Users/shun/.vim/bundles')
+  call dein#begin('/Users/shun/.vim/bundles')
+
+  " Let dein manage dein
+  " Required:
+  call dein#add('/Users/shun/.vim/bundles/repos/github.com/Shougo/dein.vim')
+
+  " Add or remove your plugins here like this:
+  "call dein#add('Shougo/neosnippet.vim')
+  "call dein#add('Shougo/neosnippet-snippets')
+	call dein#add('scrooloose/nerdtree')
+
+  " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
+
+"If you want to install not installed plugins on startup.
+"if dein#check_install()
+"  call dein#install()
+"endif
+
+"End dein Scripts-------------------------
+
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+
