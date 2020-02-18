@@ -127,3 +127,6 @@ nnoremap sk <C-w>k
 nnoremap sh <C-w>h
 nnoremap sl <C-w>l
 
+nnoremap sn gt
+nnoremap sp gT
+
