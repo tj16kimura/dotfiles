@@ -84,6 +84,9 @@ set clipboard+=unnamed
 " Deleteが効かなくならない様に
 set backspace=indent,eol,start
 
+" Turn off paste mode when leaving insert
+autocmd InsertLeave * set nopaste
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
