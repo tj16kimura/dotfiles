@@ -87,6 +87,16 @@ set backspace=indent,eol,start
 " Turn off paste mode when leaving insert
 autocmd InsertLeave * set nopaste
 
+" paneの移動
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sh <C-w>h
+nnoremap sl <C-w>l
+
+" tabの移動
+nnoremap <C-l> gt
+nnoremap <C-h> gT
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
@@ -125,11 +135,4 @@ endif
 "End dein Scripts-------------------------
 
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap sj <C-w>j
-nnoremap sk <C-w>k
-nnoremap sh <C-w>h
-nnoremap sl <C-w>l
-
-nnoremap sn gt
-nnoremap sp gT
 
