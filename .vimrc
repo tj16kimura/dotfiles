@@ -117,6 +117,8 @@ if dein#load_state('$HOME/.vim/bundles')
   "call dein#add('Shougo/neosnippet.vim')
   "call dein#add('Shougo/neosnippet-snippets')
 	call dein#add('scrooloose/nerdtree')
+	call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+	call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
   " Required:
   call dein#end()
@@ -135,4 +137,4 @@ endif
 "End dein Scripts-------------------------
 
 nnoremap <C-t> :NERDTreeToggle<CR>
-
+nnoremap <C-e> :Files<CR>
