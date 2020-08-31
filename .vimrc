@@ -66,19 +66,6 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
 " Space + Enterで行挿入
 noremap <Space><CR> o<ESC>
-"" 行番号を表示
-"set number
-"" 検索結果をハイライト表示
-"set hlsearch
-"" シンタックスハイライト
-"syntax on
-"
-"" タブの設定
-"set tabstop=2
-"set shiftwidth=2
-"" set expandtab
-"set autoindent
-"set shiftwidth=2
 "
 set clipboard+=unnamed
 " Deleteが効かなくならない様に
@@ -96,6 +83,10 @@ nnoremap sl <C-w>l
 " tabの移動
 nnoremap <C-l> gt
 nnoremap <C-h> gT
+
+"
+nnoremap cc :set nonu nolist<CR>
+nnoremap CC :set nu list<CR>
 
 "dein Scripts-----------------------------
 if &compatible
@@ -119,6 +110,11 @@ if dein#load_state('$HOME/.vim/bundles')
 	call dein#add('scrooloose/nerdtree')
 	call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
 	call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+	"vueのシンタックスハイライト
+	call dein#add('posva/vim-vue')
+
+	"閉じタグ自動補完
+	call dein#add('alvan/vim-closetag')
 
   " Required:
   call dein#end()
@@ -134,7 +130,11 @@ if dein#check_install()
   call dein#install()
 endif
 
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.erb,*.php,*.vue'
+let html_no_rendering=1
+
 "End dein Scripts-------------------------
 
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-e> :Files<CR>
+
