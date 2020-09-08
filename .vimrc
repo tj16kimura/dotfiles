@@ -88,6 +88,10 @@ nnoremap <C-h> gT
 nnoremap cc :set nonu nolist<CR>
 nnoremap CC :set nu list<CR>
 
+" colorschemeの設定
+packadd! dracula
+colorscheme dracula
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
