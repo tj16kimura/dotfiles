@@ -1,0 +1,44 @@
+alias ls='ls -FG'
+
+# for c++
+alias g='g++ -o a'
+alias a='./a'
+
+# gitのブランチ名を取得
+function prompt-git {
+	local branch_name
+	if [ ! -e  ".git" ]; then
+    # git 管理されていないディレクトリは何も返さない
+    echo "%F{black}\uE0B0%f"
+		return
+  fi
+	branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
+	echo "%K{yellow}%F{black}\uE0B0%f%k%K{yellow}%F{black} \uE0A0 $branch_name %f%k%F{yellow}\uE0B0%f"
+}
+
+# プロンプト表示をカスタマイズ
+function random-emoji {
+  # 🚀 🔥 🐉 🐛 🐈 🎱 🎲 ⚡
+  candidates=("\U1F680" "\U1F525" "\U1F409" "\U1F41B" "\U1F408" "\U1F3B1" "\U1F3B2" "\u26A1")
+  export EMOJI="${candidates[$(($RANDOM % ${#candidates[@]})) + 1]}"
+}
+
+random-emoji
+
+function pmt {
+	HOST='%K{cyan}%F{black}%B %n@%m %b%f%k%K{black}%F{cyan}\uE0B0%f%k'
+	DIR='%K{black}%F{cyan} %~ %f%k'
+	echo "\n${HOST}${DIR}`prompt-git`\n$EMOJI "
+}
+
+PROMPT='`pmt`'
+
+# fuzzy finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# fuzzy cd
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
