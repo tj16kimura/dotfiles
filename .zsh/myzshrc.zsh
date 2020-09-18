@@ -1,52 +1,38 @@
-alias ls='ls -FG --color'
+alias ls='ls -FG --color=auto'
+alias la='ls -a'
+alias ll='ls -l'
 
 # for c++
 alias g='g++ -o a'
 alias a='./a'
 
-# gitのブランチ名を取得
-function prompt-git {
-	local branch_name
-	if [ ! -e  ".git" ]; then
-    # git 管理されていないディレクトリは何も返さない
-    echo "%F{black}\uE0B0%f"
-		return
-  fi
-	branch_name=`git rev-parse --abbrev-ref HEAD 2> /dev/null`
-	echo "%K{yellow}%F{black}\uE0B0%f%k%K{yellow}%F{black} \uE0A0 $branch_name %f%k%F{yellow}\uE0B0%f"
-}
-
+# prompt
 function str_with_color() {
 	if [ $# -eq 2 ]; then
-		echo "${fg[$1]}$2${reset_color}"
+		echo "%{${fg[$1]}$2${reset_color}%}"
 	elif [ $# -eq 3 ]; then
-		echo "${fg[$1]}${bg[$2]}$3${reset_color}"
+		echo "%{${fg[$1]}${bg[$2]}$3${reset_color}%}"
 	fi
-	# if [ $# -eq 2 ]; then
-	# 	echo "%F{$1}$2%f"
-	# elif [ $# -eq 3 ]; then
-	# 	echo "%F{$1}%K{$2}$3%k%f"
-	# fi
 }
 
-ZSH_THEME_GIT_PROMPT_UNTRACKED="$(str_with_color green yellow '●')"
-ZSH_THEME_GIT_PROMPT_ADDED="$(str_with_color yellow cyan '+')"
-ZSH_THEME_GIT_PROMPT_CLEAN="clean"
-ZSH_THEME_GIT_PROMPT_MODIFIED="$(str_with_color yellow red 'M')"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="?"
+ZSH_THEME_GIT_PROMPT_ADDED="+"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+ZSH_THEME_GIT_PROMPT_MODIFIED="M"
 # ZSH_THEME_GIT_PROMPT_RENAMED
-ZSH_THEME_GIT_PROMPT_DELETED="$(str_with_color yellow red 'x')"
+ZSH_THEME_GIT_PROMPT_DELETED="x"
 # ZSH_THEME_GIT_PROMPT_STASHED
 # ZSH_THEME_GIT_PROMPT_UNMERGED
-# ZSH_THEME_GIT_PROMPT_AHEAD
-# ZSH_THEME_GIT_PROMPT_BEHIND
+ZSH_THEME_GIT_PROMPT_AHEAD=">"
+ZSH_THEME_GIT_PROMPT_BEHIND="<"
 # ZSH_THEME_GIT_PROMPT_DIVERGED
 
 function my-git-status() {
 	if [ $(current_branch) ]; then
 		INIT_TRIANGLE="$(str_with_color black yellow '\uE0B0')"
 		BRANCH_NAME="$(current_branch)"
-		GIT_STATUS="$(git_prompt_status)"
-		GIT_STATUS="$(str_with_color black yellow ' \uE0A0 '$BRANCH_NAME' [')$GIT_STATUS$(str_with_color black yellow '] ')"
+		GIT_STATUS=" \uE0A0 $BRANCH_NAME [$(git_prompt_status)] "
+		GIT_STATUS="$(str_with_color black yellow $GIT_STATUS)"
 		END_TRIANGLE="$(str_with_color yellow '\uE0B0')"
 	else
 		INIT_TRIANGLE="$(str_with_color black '\uE0B0')"
@@ -68,11 +54,11 @@ random-emoji
 function pmt {
 	HOST="$(str_with_color black cyan '%B %n@%m %b')$(str_with_color cyan black '\uE0B0')"
 	DIR="$(str_with_color cyan black ' %~ ')"
-	echo "\n${HOST}${DIR}`my-git-status`\n$EMOJI  "
+	echo "\n${HOST}${DIR}`my-git-status`\n\$ "
 }
 # # RPROMPT=""
 PROMPT='`pmt`'
-# 
+
 # fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # fuzzy cd
