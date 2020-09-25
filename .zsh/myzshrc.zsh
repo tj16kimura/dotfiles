@@ -54,7 +54,7 @@ random-emoji
 function pmt {
 	HOST="$(str_with_color black cyan '%B %n@%m %b')$(str_with_color cyan black '\uE0B0')"
 	DIR="$(str_with_color cyan black ' %~ ')"
-	echo "\n${HOST}${DIR}`my-git-status`\n\$ "
+	echo "\n${HOST}${DIR}`my-git-status`\n${EMOJI} "
 }
 # # RPROMPT=""
 PROMPT='`pmt`'
