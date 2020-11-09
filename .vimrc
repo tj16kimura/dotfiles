@@ -128,6 +128,7 @@ if dein#load_state('$HOME/.vim/bundles')
 	"閉じタグ自動補完
 	call dein#add('alvan/vim-closetag')
 
+	call dein#add('tpope/vim-surround')
   " Required:
   call dein#end()
   call dein#save_state()
