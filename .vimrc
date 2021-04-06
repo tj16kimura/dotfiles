@@ -1,5 +1,7 @@
 "setting
 "文字コードをUFT-8に設定
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 set fenc=utf-8
 " バックアップファイルを作らない
 set nobackup
@@ -130,6 +132,7 @@ if dein#load_state('$HOME/.vim/bundles')
 	"閉じタグ自動補完
 	call dein#add('alvan/vim-closetag')
 
+	call dein#add('tpope/vim-surround')
   " Required:
   call dein#end()
   call dein#save_state()
