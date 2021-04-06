@@ -124,6 +124,8 @@ if dein#load_state('$HOME/.vim/bundles')
 	call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 	"vueのシンタックスハイライト
 	call dein#add('posva/vim-vue')
+	"vim surrounding
+	call dein#add('tpope/vim-surround')
 
 	"閉じタグ自動補完
 	call dein#add('alvan/vim-closetag')
