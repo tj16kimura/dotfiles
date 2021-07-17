@@ -1,5 +1,6 @@
 "setting
 "文字コードをUFT-8に設定
+set encoding=utf-8
 set fenc=utf-8
 " バックアップファイルを作らない
 set nobackup
@@ -124,6 +125,8 @@ if dein#load_state('$HOME/.vim/bundles')
 	call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 	"vueのシンタックスハイライト
 	call dein#add('posva/vim-vue')
+	"vim surrounding
+	call dein#add('tpope/vim-surround')
 
 	"閉じタグ自動補完
 	call dein#add('alvan/vim-closetag')
