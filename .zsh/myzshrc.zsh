@@ -51,9 +51,12 @@ function random-emoji {
 
 random-emoji
 
+# set color from [black, red, green, yellow, blue, magenta, cyan, white]
+color=white
+
 function pmt {
-	HOST="$(str_with_color black cyan '%B %n@%m %b')$(str_with_color cyan black '\uE0B0')"
-	DIR="$(str_with_color cyan black ' %~ ')"
+	HOST="$(str_with_color black $color '%B %n@%m %b')$(str_with_color $color black '\uE0B0')"
+	DIR="$(str_with_color $color black ' %~ ')"
 	echo "\n${HOST}${DIR}`my-git-status`\n${EMOJI} "
 }
 # # RPROMPT=""
