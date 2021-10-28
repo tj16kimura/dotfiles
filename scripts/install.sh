@@ -1,6 +1,10 @@
 #!/bin/zsh
 
-. ${PWD}/vim.sh
-. ${PWD}/ohmyzsh.sh
+scripts_root=$(pwd)
+
 . ${PWD}/link.sh
 
+cd ${scripts_root}
+
+. ${PWD}/vim.sh
+. ${PWD}/ohmyzsh.sh
