@@ -1,0 +1,1 @@
+/Users/shun/dotfiles/.zsh
